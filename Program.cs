@@ -8,7 +8,7 @@ int count = 0;
 string seguir = "";
 int opcion;
 do {
-    Console.WriteLine("\n--- Menú Veterinaria ---");
+    Console.WriteLine("--- Menú Veterinaria ---");
     Console.WriteLine("1. Crear Servicio");
     Console.WriteLine("2. Eliminar Servicio");
     Console.WriteLine("3. Listar Servicios");
@@ -32,4 +32,5 @@ do {
     }
     Console.WriteLine("Regresar al menú [si/no]");
     seguir = Console.ReadLine();
+    Console.Clear();
 } while (seguir == "si");

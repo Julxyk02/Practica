@@ -10,5 +10,40 @@ namespace ConsoleApp1
         public string Nombre { get; set; }
         public int Edad { get; set; }
         public string Especie { get; set; }
+        public static void CrearMascota(Mascota[] mascotas, int count){
+            string continua = "";
+            do{
+                Console.Write("Ingrese el nombre de la mascota: ");
+                string nombre = Console.ReadLine();
+                Console.Write("Ingrese la edad de la mascota: ");
+                int edad = int.Parse(Console.ReadLine());
+                Console.Write("Ingrese la especie de la mascota: ");
+                string especie = Console.ReadLine();
+
+                mascotas[count] = new Mascota { Nombre = nombre, Edad = edad, Especie = especie };
+                Console.WriteLine("Mascota agregada exitosamente.");
+                Console.WriteLine("Deseas seguir solicitando mas servicios?[si/no]");
+                continua = Console.ReadLine();
+            } while (continua == "si");
+        }
+        public static void EliminarMascota(Mascota[] mascotas, int count){
+            Console.Write("Ingrese el numero de la mascota a eliminar: ");
+            string eliminar = Console.ReadLine();
+            int indice = Array.IndexOf(mascotas, eliminar);
+            if (indice != -1){
+                for (int i = indice; i < count - 1; i++){
+                    mascotas[i] = mascotas[i + 1];
+                }
+                Array.Resize(ref  mascotas, count - 1);
+                count--;
+                Console.WriteLine("Mascota eliminada.");
+            }
+        }
+        public static void ListarMascotas(Mascota[] mascotas, int count){
+            Console.WriteLine("--- Lista de Mascotas ---");
+            for (int i = 0; i < count; i++){
+                Console.WriteLine($"{i}. {mascotas[i].Nombre}, {mascotas[i].Edad} años, {mascotas[i].Especie}");
+            }
+        }
     }
 }
