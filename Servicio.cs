@@ -17,7 +17,8 @@ namespace ConsoleApp1
                 Console.Write("Ingrese el precio del servicio: ");
                 decimal precio = decimal.Parse(Console.ReadLine());
 
-                servicios[count++] = new Servicio { Descripcion = descripcion, Precio = precio };
+                servicios[count] = new Servicio { Descripcion = descripcion, Precio = precio };
+                count++;
                 Console.WriteLine("Servicio agregado exitosamente.");
                 Console.WriteLine("Deseas seguir solicitando mas servicios?[si/no]");
                 continuar = Console.ReadLine();
@@ -25,13 +26,12 @@ namespace ConsoleApp1
         }
         public static void EliminarServicio(Servicio[] servicios, int count){
             Console.Write("Ingrese servicio a eliminar: ");
-            string eliminar = Console.ReadLine();
-            int indice = Array.IndexOf(servicios, eliminar);
-            if (indice != -1){
+            int indice = int.Parse(Console.ReadLine());
+            if (indice > 0){
                 for (int i = indice; i < count - 1; i++){
                     servicios[i] = servicios[i + 1];
                 }
-                Array.Resize(ref servicios, count);
+                servicios[count - 1] = null;
                 count--;
                 Console.WriteLine("Servicio eliminado.");
             }
@@ -39,7 +39,7 @@ namespace ConsoleApp1
         public static void ListarServicios(Servicio[] servicios, int count){
             Console.WriteLine("--- Lista de Servicios ---");
             for (int i = 0; i < count; i++){
-                Console.WriteLine($"{i}. {servicios[i].Descripcion} - S/ {servicios[i].Precio}");
+                Console.WriteLine($"{i + 1}. {servicios[i].Descripcion} - S/ {servicios[i].Precio}");
             }
         }
     }

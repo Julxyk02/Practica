@@ -4,7 +4,7 @@ Mascota[] mascotas = new Mascota[100];
 Servicio[] servicios = new Servicio[100];
 Boleta[] boletas = new Boleta[100];
 
-int count = 0;
+int mascotaCount = 0, servicioCount = 0, boletaCount = 0;
 string seguir = "";
 int opcion;
 do {
@@ -21,13 +21,13 @@ do {
 
     switch (opcion)
     {
-        case 1: Servicio.CrearServicio(servicios, count); break;
-        case 2: Servicio.EliminarServicio(servicios, count); break;
-        case 3: Servicio.ListarServicios(servicios, count); break;
-        case 4: Mascota.CrearMascota(mascotas, count); break;
-        case 5: Mascota.EliminarMascota(mascotas, count); break;
-        case 6: Mascota.ListarMascotas(mascotas, count); break;
-        case 7: Boleta.CrearBoleta(boletas, count); break;
+        case 1: Servicio.CrearServicio(servicios, servicioCount); break;
+        case 2: Servicio.EliminarServicio(servicios, servicioCount); break;
+        case 3: Servicio.ListarServicios(servicios, servicioCount); break;
+        case 4: Mascota.CrearMascota(mascotas, mascotaCount); break;
+        case 5: Mascota.EliminarMascota(mascotas, mascotaCount); break;
+        case 6: Mascota.ListarMascotas(mascotas, mascotaCount); break;
+        case 7: Boleta.CrearBoleta(boletas, boletaCount); break;
         default: Console.WriteLine("Opción inválida."); break;
     }
     Console.WriteLine("Regresar al menú [si/no]");
